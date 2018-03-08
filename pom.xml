@@ -34,6 +34,31 @@
                     <target>${java.version}</target>
                 </configuration>
             </plugin>
+            <!--TEST COPY OF WAR -->
+            <plugin>
+                <artifactId>maven-resources-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <id>copy-resource-one</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>copy-resources</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>c:\apache-tomcat-8.5.9\webapps\</outputDirectory>
+                            <resources>
+                                <resource>
+                                    <directory>C:\Project\topjava18\target</directory>
+                                    <includes>
+                                        <include>topjava.war</include>
+                                    </includes>
+                                </resource>
+                            </resources>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+            <!--TEST COPY OF WAR -->
         </plugins>
     </build>
 
@@ -66,6 +91,12 @@
             <artifactId>javax.servlet-api</artifactId>
             <version>3.1.0</version>
             <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>jstl</artifactId>
+            <version>1.2</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
