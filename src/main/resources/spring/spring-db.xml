@@ -22,4 +22,18 @@
     <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
         <constructor-arg ref="dataSource"/>
     </bean>
+
+    <bean id="simpleJdbcInsert" class="org.springframework.jdbc.core.simple.SimpleJdbcInsert">
+        <constructor-arg ref="dataSource"/>
+    </bean>
+
+    <beans profile="Test">
+        <bean id="InMemoryUserRepositoryImpl" class="ru.javawebinar.topjava.repository.mock.InMemoryUserRepositoryImpl"></bean>
+        <bean id="InMemoryMealRepositoryImpl" class="ru.javawebinar.topjava.repository.mock.InMemoryMealRepositoryImpl"></bean>
+    </beans>
+    <beans profile="Production">
+        <bean id="JdbcUserRepositoryImpl" class="ru.javawebinar.topjava.repository.jdbc.JdbcUserRepositoryImpl"></bean>
+        <bean id="JdbcMealRepositoryImpl" class="ru.javawebinar.topjava.repository.jdbc.JdbcMealRepositoryImpl"></bean>
+    </beans>
+
 </beans>
